@@ -1,3 +1,10 @@
 1.摩尔定律
 2.反摩尔定律
-3.
+3. cmd 中 dir  图形化界面
+4.md java 创建java文件夹
+5.cd e:\java 今日java文件中
+6.cd..退出上一步
+7.cd java\class\team1
+8.cd\ 直接退到盘符下 D:
+9.del 删除  *.txt 删除所有txt文件的
+10.rd 删除
