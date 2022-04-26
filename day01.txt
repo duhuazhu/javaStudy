@@ -6,5 +6,5 @@
 6.cd..退出上一步
 7.cd java\class\team1
 8.cd\ 直接退到盘符下 D:
-9.del 删除  *.txt 删除所有txt文件的
+9.del 删除  *.txt 删除所有txt文件的  可以删除文件夹下面所有的文件
 10.rd 删除
