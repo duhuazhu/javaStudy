@@ -3,7 +3,7 @@
  * @version v1.0
  */
 
-public class HelloChina{
+class HelloChina{
     /**
      * 下面按是main方法  main方法的格式程序格式是固定的
      *
