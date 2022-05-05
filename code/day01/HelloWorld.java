@@ -1,6 +1,7 @@
 /** 文档注释
  * @author duhuazhu
  * @version v1.0
+ * 编译过程中 会生成多个字节码文件 字节码文件 会和class一致
  */
 
 class HelloChina{
@@ -9,6 +10,11 @@ class HelloChina{
      *
      * */
         public static void main(String[] args){
+            System.out.print("你好啊");
             System.out.println("Hello World");
+            System.out.print("你好啊");
         }
+ }
+ class duhuazhu{
+
  }
