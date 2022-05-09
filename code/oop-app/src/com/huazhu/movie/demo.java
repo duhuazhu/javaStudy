@@ -1,7 +1,14 @@
 package com.huazhu.movie;
 
+import java.util.Arrays;
+
 public class demo {
     public static void main(String[] args) {
+        int[] arr=new int[3];
+        arr[0] = 1;
+        arr[1] = 2;
+        arr[2] = 3;
+        System.out.println(Arrays.toString(arr));
         movie[] movies = new movie[3];
         movies[0] = new movie("《长津湖》", 9.7, "吴京");
         movies[1] = new movie("《长津湖1》", 9.7, "吴京");
