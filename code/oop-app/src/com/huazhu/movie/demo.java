@@ -14,12 +14,16 @@ public class demo {
         movies[1] = new movie("《长津湖1》", 9.7, "吴京");
         movies[2] = new movie("《长津湖2》", 9.7, "吴京");
 
+
         for (int i = 0; i < movies.length; i++) {
             System.out.println("片名:"+movies[i].getName());
             System.out.println("评分:"+movies[i].getGrade());
             System.out.println("导演:"+movies[i].getDirector());
             System.out.println("------------------------------------------");
         }
+
+        char a = 111;
+        System.out.println(a);
     }
 }
 
