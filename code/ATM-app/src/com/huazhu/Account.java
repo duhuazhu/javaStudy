@@ -6,15 +6,15 @@ public class Account {
 
     public Account() {
     }
-    public Account(String cardId, String userName, String passWorld, double money, double quotaMoney) {
+    public Account(String cardId, String userName, String PassWord, double money, double quotaMoney) {
         this.cardId = cardId;
         this.userName = userName;
-        this.passWorld = passWorld;
+        this.PassWord = PassWord;
         this.money = money;
         this.quotaMoney = quotaMoney;
     }
 
-    private String passWorld;//√‹¬Î
+    private String PassWord;//√‹¬Î
     private double money;
 
     public String getCardId() {
@@ -33,12 +33,12 @@ public class Account {
         this.userName = userName;
     }
 
-    public String getPassWorld() {
-        return passWorld;
+    public String getPassWord() {
+        return PassWord;
     }
 
-    public void setPassWorld(String passWorld) {
-        this.passWorld = passWorld;
+    public void setPassWord(String PassWord) {
+        this.PassWord = PassWord;
     }
 
     public double getMoney() {
