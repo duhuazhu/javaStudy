@@ -6,6 +6,9 @@ public class funArr {
     }
 
     public static String toString(int[] arr) {
+        {
+            System.out.println("构造器执行力 我就执行");
+        }
         if (arr == null) {
             return null;
         }
