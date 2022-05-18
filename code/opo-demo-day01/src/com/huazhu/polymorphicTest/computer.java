@@ -15,16 +15,17 @@ public class computer {
         this.name = name;
     }
 
-    public void installUSB2(USB2 usb2){
-        if(usb2 instanceof  keyboard){
-            keyboard k =(com.huazhu.polymorphicTest.keyboard)usb2;
+    public void installUSB2(USB2 usb2) {
+        if (usb2 instanceof keyboard) {
+            keyboard k = (com.huazhu.polymorphicTest.keyboard) usb2;
             k.keyDown();
-        }else if(usb2 instanceof  mouse) {
+        } else if (usb2 instanceof mouse) {
             mouse m = (mouse) usb2;
             m.click();
         }
     }
-    public void start(){
-        System.out.println(this.getName()+"开机");
+
+    public void start() {
+        System.out.println(this.getName() + "开机");
     }
 }
