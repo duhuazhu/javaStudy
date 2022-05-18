@@ -25,4 +25,7 @@ public  class dog extends Animal {
         System.out.println(getName() + "要吃东西");
 
     }
+    public void lookDoor(){
+        System.out.println(getName() + "在看门");
+    }
 }
