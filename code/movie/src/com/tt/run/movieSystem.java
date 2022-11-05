@@ -51,8 +51,8 @@ public class movieSystem {
         All_USERS.add(c);
 
         Business b = new Business();
-        b.setLoginName("duhuazhu888");
-        b.setPassword("123456");
+        b.setLoginName("123");
+        b.setPassword("123");
         b.setUserName("黑马包猪婆");
         b.setSex('女');
         b.setPhone("110110");
@@ -197,9 +197,11 @@ public class movieSystem {
                 break;
             case "3":
                 //下架电影信息
+                deleteMovie();
                 break;
             case "4":
                 //修改电影信息
+                updateMovie();
                 break;
                 case "5":
                     return;
@@ -209,6 +211,51 @@ public class movieSystem {
         }
     }
 
+    private static void updateMovie() {
+
+
+    }
+
+    private static void deleteMovie() {
+        System.out.println("==========下架电影==============");
+        Business business = (Business) loginUser;
+        List<Movie> movies = ALL_MOVIES.get(business);
+        if (movies.size() == 0) {
+            System.out.println("当前无片可以下架～");
+            return;
+        }
+        while (true) {
+            //2.让用户选择需要下架的电影名称
+            System.out.println("让用户选择需要下架的电影名称");
+            String movieName = SYS_SC.nextLine();
+            //3.去查询有没有这个影片对象
+            Movie movie = getMoiveByName(movieName);
+            if (movie != null) {
+                movies.remove(movie);
+            }else{
+                System.out.println("您的店铺没有商家该影片");
+                System.out.println("请问继续下架嘛");
+                String command = SYS_SC.nextLine();
+                switch (command) {
+                    case "y":
+                        break;
+                    case "n":
+                        System.out.println("好的");
+                    default:
+                }
+            }
+        }
+    }
+    public  static  Movie getMoiveByName(String movieName) {
+            Business business = (Business) loginUser;
+            List<Movie> movies = ALL_MOVIES.get(business);
+        for (Movie movie : movies) {
+            if(movie.getName().contains(movieName)) {
+                return movie;
+            }
+        }
+        return null;
+    }
     /**
      * 商家进行电影上架
      */
