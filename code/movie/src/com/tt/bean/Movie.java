@@ -20,6 +20,9 @@ public class Movie {
         this.startTime = startTime;
     }
 
+    public Movie(String name, String actor, Double valueOf, Double valueOf1, Integer valueOf2, Date parse) {
+    }
+
     public String getName() {
         return name;
     }
