@@ -32,7 +32,7 @@ public class movieSystem {
 
     //定义静态的用户对象 记住当前登陆成功的对象
     public static User loginUser;
-    public static SimpleDateFormat sdf  = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    public static SimpleDateFormat sdf  = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 
 
     public static final Logger LOGGER =  LoggerFactory.getLogger("movieSystem.class");
@@ -212,7 +212,63 @@ public class movieSystem {
     }
 
     private static void updateMovie() {
+        System.out.println("==========修改电影==============");
+        Business business = (Business) loginUser;
+        List<Movie> movies = ALL_MOVIES.get(business);
+        if (movies.size() == 0) {
+            System.out.println("当前无片可以修改～");
+            return;
+        }
+        while (true) {
+            //2.让用户选择需要下架的电影名称
+            System.out.println("让用户选择需要修改的电影名称");
+            String movieName = SYS_SC.nextLine();
+            //3.去查询有没有这个影片对象
+            Movie movie = getMoiveByName(movieName);
+            if (movie != null) {
+                System.out.println("请输入修改后片名：");
+                String name = SYS_SC.nextLine();
+                System.out.println("请输入修改后主演");
+                String actor = SYS_SC.nextLine();
+                System.out.println("请输入修改后时长");
+                String time = SYS_SC.nextLine();
+                System.out.println("请输入修改后票价");
+                String price = SYS_SC.nextLine();
+                System.out.println("请输入修改后票数");
+                String totalNumber = SYS_SC.nextLine();
+//                System.out.println("您当前店铺的已经成功修改"+movie.getName());
+                while (true) {
+                    try {
+                        System.out.println("请输入修改后的放映时间");
+                        String stime = SYS_SC.nextLine();
+                        movie.setName(name);
+                        movie.setActor(actor);
+                        movie.setPrice(Double.valueOf(price));
+                        movie.setTime(Double.valueOf(time));
+                        movie.setNumber(Integer.valueOf(totalNumber));
+                        movie.setStartTime(sdf.parse(stime));
+                        System.out.println("恭喜你，您已经成功修改该影片！！！");
+                        showBusinessInfos();
+                        return;//退出
+                    }catch (Exception e){
+                        e.printStackTrace();
+                        LOGGER.info("时间解析出了问题");
+                    }
+                }
 
+            }else{
+                System.out.println("您的店铺没有上架商家该影片");
+                System.out.println("请问继续修改吗？y/n");
+                String command = SYS_SC.nextLine();
+                switch (command) {
+                    case "y":
+                        break;
+                    case "n":
+                        System.out.println("好的");
+                    default:
+                }
+            }
+        }
 
     }
 
@@ -232,6 +288,8 @@ public class movieSystem {
             Movie movie = getMoiveByName(movieName);
             if (movie != null) {
                 movies.remove(movie);
+                System.out.println("您当前店铺的已经成功下架"+movie.getName());
+                showBusinessInfos();
             }else{
                 System.out.println("您的店铺没有商家该影片");
                 System.out.println("请问继续下架嘛");
@@ -279,6 +337,8 @@ public class movieSystem {
                 String stime = SYS_SC.nextLine();
 
                 Movie movie = new Movie(name,actor,Double.valueOf(time),Double.valueOf(price),Integer.valueOf(totalNumber), sdf.parse(stime));
+                movies.add(movie);
+                System.out.println(movies);
                 System.out.println("您已经成功添加,"+movie.getName()+"");
                 return;//退出
             }catch (ParseException e){
@@ -294,11 +354,11 @@ public class movieSystem {
         LOGGER.info(loginUser.getUserName() + "商家，正查看自己的详情");
         Business business = (Business) loginUser;
         System.out.println(business.getShopName()+"\t\t"+business.getPhone() +"\t\t地址"+business.getAddress());
-        List<Movie> movies=ALL_MOVIES.get(loginUser);
+        List<Movie> movies=ALL_MOVIES.get(business);
         if (movies.size() > 0) {
             System.out.println("片名\t\t\t主演\t\t时长\t\t评分\t\t票价\t\t余票数量\t\t放映时间");
             for (Movie movie : movies) {
-                System.out.println(movie.getName() +"\t\t"+ movie.getActor() +"\t\t"+ movie.getTime()+"\t\t"+ sdf.format(movie.getStartTime()));
+                System.out.println(movie.getName() +"\t\t"+ movie.getActor() +"\t\t"+ movie.getTime()+"\t\t"+movie.getScore() +"\t\t"+ movie.getPrice()+"\t\t"+movie.getNumber() +"\t\t"+ movie.getStartTime());
             }
         }else {
             System.out.println("您的店铺当前无片可播");

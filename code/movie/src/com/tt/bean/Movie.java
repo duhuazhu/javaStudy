@@ -7,21 +7,18 @@ public class Movie {
     private String actor;
 
 
-    public Movie() {
-    }
 
-    public Movie(String name, String actor, Double score, double time, double price, int number, Date startTime) {
+
+    public Movie(String name, String actor, double time, double price, int number, Date startTime) {
         this.name = name;
         this.actor = actor;
-        this.score = score;
+//        this.score = score;
         this.time = time;
         this.price = price;
-        this.number = number;
+        this.number =  number;
         this.startTime = startTime;
     }
 
-    public Movie(String name, String actor, Double valueOf, Double valueOf1, Integer valueOf2, Date parse) {
-    }
 
     public String getName() {
         return this.name;
